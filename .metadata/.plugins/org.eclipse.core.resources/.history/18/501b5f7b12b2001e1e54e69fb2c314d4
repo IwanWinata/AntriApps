@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Antrian</title>
+</head>
+<body>
+    <h1>Sistem Antrian</h1>
+    
+    <form action="/AntriApps/AntrianServlet" method="post">
+        <input type="hidden" name="action" value="ambil">
+        <button type="submit">Ambil Nomor Antrian</button>
+    </form>
+
+    <br>
+
+    <form action="/your-web-app-name/AntrianServlet" method="post">
+        <input type="hidden" name="action" value="panggil">
+        <button type="submit">Panggil Nomor Antrian</button>
+    </form>
+
+    <br>
+
+    <form action="/your-web-app-name/AntrianServlet" method="post">
+        <input type="hidden" name="action" value="lihat">
+        <button type="submit">Lihat Antrian</button>
+    </form>
+
+</body>
+</html>
