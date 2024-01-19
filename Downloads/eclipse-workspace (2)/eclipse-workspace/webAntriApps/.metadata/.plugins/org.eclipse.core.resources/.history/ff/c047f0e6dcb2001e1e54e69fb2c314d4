@@ -1,0 +1,32 @@
+package antrianapp;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Antrian {
+    private final Queue<Integer> nomorAntrian = new LinkedList<>();
+    private int counter = 1;
+
+    public void ambilNomorAntrian() {
+        nomorAntrian.offer(counter);
+        System.out.println("Nomor antrian " + counter + " diambil.");
+        counter++;
+    }
+
+    public void panggilNomorAntrian() {
+        if (!nomorAntrian.isEmpty()) {
+            int nomor = nomorAntrian.poll();
+            System.out.println("Nomor antrian " + nomor + " dipanggil.");
+        } else {
+            System.out.println("Semua antrian sudah dipanggil.");
+        }
+    }
+
+    public void lihatAntrian() {
+        System.out.println("Daftar Nomor Antrian: " + nomorAntrian);
+    }
+
+    public Queue<Integer> getNomorAntrian() {
+        return nomorAntrian;
+    }
+}

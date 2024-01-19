@@ -1,0 +1,23 @@
+package antrianapp;
+
+public class LoketAntrian extends Antrian {
+    private String loketName;
+
+    public LoketAntrian(String loketName) {
+        this.loketName = loketName;
+    }
+
+    @Override
+    public void panggilNomorAntrian() {
+        if (!getNomorAntrian().isEmpty()) {
+            int nomor = getNomorAntrian().poll();
+            System.out.println(loketName + ": Nomor antrian " + nomor + " dipanggil.");
+        } else {
+            System.out.println(loketName + ": Semua antrian sudah dipanggil.");
+        }
+    }
+
+    public void layaniPelanggan() {
+        System.out.println(loketName + ": Pelanggan sedang dilayani.");
+    }
+}
