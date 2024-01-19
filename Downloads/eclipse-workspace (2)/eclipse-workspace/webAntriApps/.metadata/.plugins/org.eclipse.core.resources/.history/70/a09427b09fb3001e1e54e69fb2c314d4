@@ -1,0 +1,43 @@
+package antrianapp;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+public class AntrianServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    private Antrian antrian;
+
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+                throws ServletException, IOException {
+            String action = request.getParameter("action");
+
+            if ("ambil".equals(action)) {
+                // Proses ambil nomor antrian
+                antrian.ambilNomorAntrian(request);
+
+                // Set nilai nomor yang dipanggil di request attribute
+                request.setAttribute("nomorYangDipanggil", antrian.getNomorAntrian());
+
+                // Redirect kembali ke halaman utama
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            } else if ("panggil".equals(action)) {
+                // Proses panggil nomor antrian
+                antrian.panggilNomorAntrian();
+
+                // Redirect kembali ke halaman utama
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            } else if ("lihat".equals(action)) {
+                // Proses lihat antrian
+                // ...
+
+                // Redirect kembali ke halaman utama
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            } else {
+                // Aksi tidak valid
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Aksi tidak valid");
+            }
+        }
+    }

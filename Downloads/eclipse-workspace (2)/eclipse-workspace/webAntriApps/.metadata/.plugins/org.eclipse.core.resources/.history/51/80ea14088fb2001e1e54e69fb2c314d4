@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Antrian</title>
+</head>
+<body>
+    <h1>Antrian</h1>
+
+    <form action="AntrianServlet" method="post">
+        <input type="submit" value="Ambil Nomor Antrian">
+    </form>
+
+    <p>Daftar nomor antrian:</p>
+   
+    <ul>
+    <c:forEach var="nomor" items="${daftarAntrian}">
+        <li>${nomor}</li>
+    </c:forEach>
+</ul>
+  
+</body>
+</html>

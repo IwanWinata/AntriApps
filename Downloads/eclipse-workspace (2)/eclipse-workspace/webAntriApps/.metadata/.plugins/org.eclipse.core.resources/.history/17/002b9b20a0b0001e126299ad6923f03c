@@ -1,0 +1,34 @@
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+
+<%
+antrianapp.Antrian antrian = new antrianapp.Antrian();
+%>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Antrian</title>
+</head>
+<body>
+    <h1>Antrian</h1>
+
+    <% if (request.getParameter("ambilNomorAntrian") != null) { %>
+        <%
+            antrian.ambilNomorAntrian();
+        %>
+        <p>Nomor antrian Anda: <%= antrian.getNomorAntrian() %></p>
+    <% } %>
+
+    <ul>
+        <%
+            for (int nomorAntrian : antrian.getDaftarNomorAntrian()) {
+        %>
+            <li><%= nomorAntrian %></li>
+        <%
+            }
+        %>
+    </ul>
+</body>
+</html>

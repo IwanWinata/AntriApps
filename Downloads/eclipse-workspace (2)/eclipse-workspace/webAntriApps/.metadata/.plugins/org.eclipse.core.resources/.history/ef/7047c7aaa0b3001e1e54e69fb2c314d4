@@ -1,0 +1,117 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntriApps</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        h3 {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+
+        .error-message, .success-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .error-message {
+            background-color: #ff9999;
+            color: #cc0000;
+        }
+
+        .success-message {
+            background-color: #99ff99;
+            color: #006600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Antri Apps</h1>
+    </header>
+
+    <div class="container">
+        <form onsubmit="return validateForm();" action="/AntriApps/AntrianServlet" method="post">
+            <input type="hidden" name="action" value="ambil">
+            <button class="form-button" type="submit">Ambil Nomor Antrian</button>
+        </form>
+
+        <form onsubmit="return validateForm();" action="/AntriApps/AntrianServlet" method="post">
+            <input type="hidden" name="action" value="panggil">
+            <button class="form-button" type="submit">Panggil Nomor Antrian</button>
+        </form>
+
+        <form onsubmit="return validateForm();" action="/AntriApps/AntrianServlet" method="post">
+            <input type="hidden" name="action" value="lihat">
+            <button class="form-button" type="submit">Lihat Antrian</button>
+        </form>
+
+        <h3>Nomor Antrian: ${nomorYangDipanggil}</h3>
+        <h3>Nomor Antrian: ${nomorAntrian}</h3>
+        <h3>Daftar Antrian: ${daftarAntrian}</h3>
+
+        <div class="error-message">
+            <c:if test="${not empty errorMessage}">
+                <p>${errorMessage}</p>
+            </c:if>
+        </div>
+
+        <c:if test="${not empty successMessage}">
+            <div class="success-message">
+                <p>${successMessage}</p>
+            </div>
+        </c:if>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Lakukan validasi klien di sini
+            // Return true jika valid, false jika tidak
+        }
+    </script>
+</body>
+</html>

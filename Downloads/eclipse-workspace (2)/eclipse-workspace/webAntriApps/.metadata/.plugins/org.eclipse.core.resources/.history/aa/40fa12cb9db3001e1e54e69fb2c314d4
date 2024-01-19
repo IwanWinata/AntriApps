@@ -1,0 +1,82 @@
+package antrianapp;
+
+import jakarta.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Scanner;
+
+@SuppressWarnings("unused")
+public class Antrian {
+    private final Queue<Integer> nomorAntrian = new LinkedList<>();
+    private int counter = 1;
+    private final Scanner scanner;
+
+    public Antrian() {
+        this.scanner = new Scanner(System.in);
+    }
+
+    public static void main(String[] args) {
+        Antrian antrianApp = new Antrian();
+
+        try {
+            while (true) {
+                System.out.println("Menu:");
+                System.out.println("1. Ambil Nomor Antrian");
+                System.out.println("2. Panggil Nomor Antrian");
+                System.out.println("3. Lihat Antrian");
+                System.out.println("4. Keluar");
+                System.out.print("Pilih menu (1-4): ");
+
+                int pilihan = antrianApp.scanner.nextInt();
+
+                switch (pilihan) {
+                    case 1 -> antrianApp.ambilNomorAntrian();
+                    case 2 -> antrianApp.panggilNomorAntrian();
+                    case 3 -> antrianApp.lihatAntrian();
+                    case 4 -> {
+                        System.out.println("Terima kasih, program selesai.");
+                        System.exit(0);
+                    }
+                    default -> System.out.println("Pilihan tidak valid. Silakan pilih lagi.");
+                }
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Input tidak valid. Masukkan angka.");
+            antrianApp.scanner.nextLine(); // membersihkan buffer input
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan: " + e.getMessage());
+        } finally {
+            antrianApp.scanner.close(); // Menutup Scanner di blok finally
+        }
+    }
+
+    public void ambilNomorAntrian() {
+        nomorAntrian.offer(counter);
+        System.out.println("Nomor Antrian Anda: " + counter);
+        counter++;
+    }
+
+    public void panggilNomorAntrian() {
+        if (!nomorAntrian.isEmpty()) {
+            int nomor = nomorAntrian.poll();
+            System.out.println("Nomor antrian " + nomor + " dipanggil.");
+        } else {
+            System.out.println("Semua antrian sudah dipanggil.");
+        }
+    }
+
+    public void lihatAntrian() {
+        System.out.println("Daftar Nomor Antrian: " + nomorAntrian);
+    }
+
+    public int getNomorAntrian() {
+        return nomorAntrian.peek();
+    }
+
+    public List<Integer> getDaftarNomorAntrian() {
+        return new ArrayList<>(nomorAntrian);
+    }
+}

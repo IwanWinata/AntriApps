@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+/Users/user/eclipse-workspace/webAntriApps/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2922117776.index
+3249387918.index
+3757043070.index
+13262918.index
+3498304101.index
+181524048.index
+801136970.index
+3498304101.index

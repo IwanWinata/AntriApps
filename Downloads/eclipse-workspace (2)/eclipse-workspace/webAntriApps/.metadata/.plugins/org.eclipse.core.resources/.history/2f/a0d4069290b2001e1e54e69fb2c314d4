@@ -1,0 +1,50 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Form Antrian</title>
+</head>
+<body>
+    <h1>Sistem Antrian</h1>
+
+    <form action="/AntriApps/AntrianServlet" method="post">
+        <input type="hidden" name="action" value="ambil">
+        <button type="submit">Ambil Nomor Antrian</button>
+    </form>
+
+    <br>
+
+    <form action="/AntriApps/AntrianServlet" method="post">
+        <input type="hidden" name="action" value="panggil">
+        <button type="submit">Panggil Nomor Antrian</button>
+    </form>
+
+    <br>
+
+    <form action="/AntriApps/AntrianServlet" method="post">
+        <input type="hidden" name="action" value="lihat">
+        <button type="submit">Lihat Antrian</button>
+    </form>
+
+	<br>
+	
+    <p>Daftar nomor antrian:</p>
+    <ul id="daftarAntrian">
+        <!-- Daftar nomor antrian akan ditambahkan di sini oleh JavaScript -->
+    </ul>
+
+    <h3>Nomor Antrian: ${nomorAntrian}</h3>
+    <h3>Daftar Antrian: ${daftarAntrian}</h3>
+
+    <script>
+        var daftarAntrian = ${daftarAntrian};
+        var ul = document.getElementById("daftarAntrian");
+
+        for (var i = 0; i < daftarAntrian.length; i++) {
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode(daftarAntrian[i]));
+            ul.appendChild(li);
+        }
+    </script>
+
+</body>
+</html>
