@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\Iwan\Downloads\eclipse-workspace (3)\eclipse-workspace\webAntriApps\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3828177836.index
+3201100716.index
+45998256.index
+397404363.index
+4127071654.index
+3740956381.index

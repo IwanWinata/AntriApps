@@ -1,0 +1,42 @@
+package antrianapp;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class AntriApps {
+    public static void main(String[] args) {
+        Antrian antrian = new Antrian();
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            while (true) {
+                System.out.println("Menu:");
+                System.out.println("1. Ambil Nomor Antrian");
+                System.out.println("2. Panggil Nomor Antrian");
+                System.out.println("3. Lihat Antrian");
+                System.out.println("4. Keluar");
+                System.out.print("Pilih menu (1-4): ");
+
+                int pilihan = scanner.nextInt();
+
+                switch (pilihan) {
+                    case 1 -> antrian.ambilNomorAntrian(null);
+                    case 2 -> antrian.panggilNomorAntrian();
+                    case 3 -> antrian.lihatAntrian();
+                    case 4 -> {
+                        System.out.println("Terima kasih, program selesai.");
+                        System.exit(0);
+                    }
+                    default -> System.out.println("Pilihan tidak valid. Silakan pilih lagi.");
+                }
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Input tidak valid. Masukkan angka.");
+            scanner.nextLine(); // membersihkan buffer input
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan: " + e.getMessage());
+        } finally {
+            scanner.close(); // Menutup Scanner di blok finally
+        }
+    }
+}
